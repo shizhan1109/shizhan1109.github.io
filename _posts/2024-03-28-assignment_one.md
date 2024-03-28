@@ -8,7 +8,7 @@ Here is result:
 
 2. Then detect the largest contours using cv2.findContours
 Here is result:
-![Image](images/A1result/q1_2.jpg)
+![Image](images/q1_2.jpg)
 <br>Here is code:<br>
 ```
 import cv2
