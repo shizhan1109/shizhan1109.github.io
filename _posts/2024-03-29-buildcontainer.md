@@ -23,3 +23,11 @@ https://hub.docker.com/_/ubuntu
 or we can build a new image based on a parent image.
 
 https://docs.docker.com/build/building/base-images/
+
+
+
+docker build -t myjupyter .
+
+docker container run --name onion myjupyter
+
+But the file can not copy to container
