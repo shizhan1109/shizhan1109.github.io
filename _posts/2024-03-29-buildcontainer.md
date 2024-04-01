@@ -25,9 +25,24 @@ or we can build a new image based on a parent image.
 https://docs.docker.com/build/building/base-images/
 
 
+`docker container run --rm --name onion myjupyter`   --rm Automatically remove the container when it exits
 
-docker build -t myjupyter .
+`docker build --rm -t myjupyter .` --rm Remove intermediate containers 
 
-docker container run --name onion myjupyter
 
-But the file can not copy to container
+`docker ps -a`
+`docker rm onion`
+`docker image prune`
+
+## copy file into docker
+
+dockerfile format in <https://docs.docker.com/reference/dockerfile/>\
+
+COPY ./SimpleFingerprintRecognitionExample /home/jovyan/work
+
+## import into docker
+
+`docker container run --user root -e CHOWN_HOME=yes -e CHOWN_HOME_OPTS='-R' --rm
+ --name onion myjupyter` add run paras ix permission problem
+
+ 
