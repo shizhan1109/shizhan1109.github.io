@@ -42,7 +42,11 @@ COPY ./SimpleFingerprintRecognitionExample /home/jovyan/work
 
 ## import into docker
 
-`docker container run --user root -e CHOWN_HOME=yes -e CHOWN_HOME_OPTS='-R' --rm
- --name onion myjupyter` add run paras ix permission problem
+## run container
 
- 
+`docker container run -m 2GB --user root -e CHOWN_HOME=yes -e CHOWN_HOME_OPTS='-R' -d --name onion myjupyter` add run paras to fix permission problem
+
+## use github in docker
+
+RUN apt-get -y install git
+RUN git clone https://github.com/shizhan1109/ELEC4630.git
