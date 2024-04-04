@@ -9,7 +9,7 @@ Here is result:
 
 2. Then detect the largest contours using cv2.findContours
 Here is result:
-![Image](images/q1_2.jpg)
+![Image](/images/q1_2.jpg)
 
 ![](/images/logo.png "fast.ai's logo")
 
