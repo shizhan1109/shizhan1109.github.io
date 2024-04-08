@@ -11,3 +11,4 @@ A ROC& (Receiving Operating Curve) is given where FNMR is plotted as a function 
 the curve is drawn in log-log scales for better comprehension.
 
 - extract a function
+- save structures to improve efficiency
