@@ -9,7 +9,7 @@ Here is result:
 
 2. Then detect the largest contours using cv2.findContours
 Here is result:
-![Image](/images/q1_2.jpg)
+![Image](/images/A1result/q1_2.jpg)
 
 
 <br>Here is code:<br>
@@ -43,13 +43,14 @@ key = cv2.waitKey(0)
 
 1. Using the exist method to detect all the other images
 <br>Here is result:<br>
-![Image](images/A1result/q1_3.jpg)
+![Image](/images/A1result/q1_3.jpg)
+
 Nearly half of images have right sign while others can not. It is apparently that one method can not detect all. So we classify the errors to three types, **multi-signs**, **detect within signs**, and **cannot detect**. we will solve them one by one, and explain the reason why the detect method fail.
 
 1. multi-signs error
 After fine tune the Canny parameters and increase contours' numbers, we have better result. But in the below result, the image on the left still can not detect well. we suppose the sign has similar color as sky and the background has too much noise which generate many edges.
 <br>Here is output image:<br>
-![Image](images/A1result/q1_4.jpg)
+![Image](/images/A1result/q1_4.jpg)
 <br>Here is code:<br>
 ```
 edges = cv2.Canny(img, 200, 300)
@@ -64,11 +65,11 @@ for contour in contours[:7]:
 3. detect within signs error
 we find that in this kind of image, the edge is not continue in several points, like the image blow. So findContours can not work correctly even though the detected edge are generally clear.
 <br>Here is output image:<br>
-![Image](images/A1result/q1_5.jpg)
+![Image](/images/A1result/q1_5.jpg)
 
 So we introduce cv2.dilate, which can eliminate the gaps between edges. "image6.jpg" can have better result as below.
 <br>Here is output image:<br>
-![Image](images/A1result/q1_6.jpg)
+![Image](/images/A1result/q1_6.jpg)
 <br>Here is code:<br>
 ```
 dilated_image = cv2.dilate(img, np.ones((5, 5), np.uint8), iterations=1)
@@ -83,9 +84,9 @@ for contour in contours[:5]:
 ```
 4. cannot detect error
 The images blew all can not detect at all. But each of them has different reason. The first one on the left, sign is small and the trees have a bigger gradient compare with sky. In the second one, the white sign on the road becomes the largest contour area. The third one has edge discontinue problem which is more similar to the lass group, and only part of sign edge is detected. The forth one's upper edge is effected by snow, which means it is not clear edge.
-![Image](images/A1result/q1_7.jpg)
+![Image](/images/A1result/q1_7.jpg)
 <br>we add another GaussianBlur, which means erase more noise. The third one has better result as below.
-![Image](images/A1result/q1_8.jpg)
+![Image](/images/A1result/q1_8.jpg)
 <br>Here is code:<br>
 ```
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -104,7 +105,7 @@ for contour in contours[:3]:
 1. Create a template and match the template
 Because the position of the power cable on the pantograph don't change much in the video. So we want to locate a more precious area for detection or other operation. Then we create a template and use the template to match the same area in other frames through "cv2.matchTemplate".
 <br>Here is template:<br>
-![Image](images/A1result/q2_1.jpg)
+![Image](/images/A1result/q2_1.jpg)
 <br>Here is code:<br>
 ```
 # Creat template
@@ -128,7 +129,7 @@ cv2.rectangle(frame, max_loc, (max_loc[0] + width, max_loc[1] + height), 255, 2)
 2. Apply Hough method in selected area
 We am apply Hough method trying to find the lines in the frame through "cv2.HoughLines".
 <br>Here is one output frame:<br>
-![Image](images/A1result/q2_2.jpg)
+![Image](/images/A1result/q2_2.jpg)
 <br>Here is code:<br>
 ```
 edges = cv2.Canny(img_blur, 400, 550)
@@ -157,11 +158,11 @@ After that, we have meet several problems.
 - Detect cable
 The upper area is a better place to find the cable, So we create another area which is detecting cable only. It seems much better in cable detection.
 <br>Here is one output frame:<br>
-![Image](images/A1result/q2_3.jpg)
+![Image](/images/A1result/q2_3.jpg)
 - Detect pantograph
 To find the pantograph, we filter the horizontal line, and pick the top one.
 <br>Here is one output frame:<br>
-![Image](images/A1result/q2_5.jpg)
+![Image](/images/A1result/q2_5.jpg)
 <br>Here is code:<br>
 ```
 lines = cv2.HoughLines(edges, 1, np.pi / 180, 80)
@@ -188,7 +189,7 @@ Here is the output video link:
 - Filt rho and theta of lines to classify cable. Because suspension cable has fixed region of rho and theta.
 - Limit derivative of rho. Because rho of cable will not change quickly, it changes smoothly.Any detected line which has large derivative of rho is wrong detect.
 <br>Here is one output frame:<br>
-![Image](images/A1result/q2_6.jpg)
+![Image](/images/A1result/q2_6.jpg)
 Here is code snippet of the blow two filters:
 ```
 lines = cv2.HoughLines(edges, 1, np.pi / 180, 100)
@@ -204,7 +205,7 @@ if lines.any():
 ```
 5. Final result
 <br>Here is one output frame:<br>
-![Image](images/A1result/q2_4.jpg)
+![Image](/images/A1result/q2_4.jpg)
 
 Here is the output video link:
 [https://drive.google.com/file/d/1u2UZowAeIh_85Yp3C4fytGPp57Ra_9vF/view?usp=sharing](https://drive.google.com/file/d/1u2UZowAeIh_85Yp3C4fytGPp57Ra_9vF/view?usp=sharing)
@@ -216,23 +217,23 @@ For day night vision or brightness changing situation, cable or pantograph detec
 1. detect broomstick line
 - Using Canny detect edges and HoughLines detect lines.But there are too many lines.
 <br>Here is output image:<br>
-![Image](images/A1result/q3_2.jpg)
+![Image](/images/A1result/q3_2.jpg)
 
 
 - Filter line and choose one
 Through the last image, find that these line are in groups, ans echo group has similar rho and theta of lines. So filter the rho and theta, and choose the first one.
 <br>Here is output image:<br>
-![Image](images/A1result/q3_3.jpg)
+![Image](/images/A1result/q3_3.jpg)
 
 2. detect white line
 The white line is relatively small. So cut out the right part of image, we am using pixels after 300 on x-axis. Then using the same method as broomstick line detection.
 <br>Here is output image:<br>
-![Image](images/A1result/q3_4.jpg)
+![Image](/images/A1result/q3_4.jpg)
 
 3. detect wheels
 Use HoughCircles to detect the circles. And set the maxRadius to 30 to filter other circles.
 <br>Here is output image:<br>
-![Image](images/A1result/q3_1.jpg)
+![Image](/images/A1result/q3_1.jpg)
 
 # Q4
 ## a
