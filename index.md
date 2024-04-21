@@ -1,12 +1,6 @@
-Hello and welcome to this blog. Edit the `index.md` file to change this content. All pages on the blog, including this one, use [Markdown](https://guides.github.com/features/mastering-markdown/). You can include images:
-
-<!-- ![Image of fast.ai logo](images/logo.png) -->
-
-[git repository](https://github.com/shizhan1109/shizhan1109.github.io/blob/master/README.md)
-
-## This is a title
-
-And you can include links, like this [link to fast.ai](https://www.fast.ai). Posts will appear after this file. 
+**Hello and welcome to this blog. This is zhan, and I am a master student in University of Queensland.**
 
 
-hihi
+[github repository link](https://github.com/shizhan1109/shizhan1109.github.io)
+
+![pineapple house](/images/pineapple.png)
