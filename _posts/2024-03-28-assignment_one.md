@@ -5,14 +5,12 @@
 
 1. Find my favorite image within folder which is Image19. And using canny edge detection to find the edge. Canny edge detection include noise reduction using Gaussian filter and edge detection by vertical, horizontal gradient.
 Here is result:
-![Image](../images/A1result/q1_1.jpg)
-![fast.ai's logo](/images/logo.png)
+![Image](/images/A1result/q1_1.jpg)
 
 2. Then detect the largest contours using cv2.findContours
 Here is result:
 ![Image](/images/q1_2.jpg)
 
-![](/images/logo.png "fast.ai's logo")
 
 <br>Here is code:<br>
 ```
